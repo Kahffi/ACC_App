@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./Pages/App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Auth from "./Pages/Auth.tsx";
-import LoginForm from "./components/forms/LoginForm.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,18 +11,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "auth",
+    path: "auth/:session",
     element: <Auth />,
-    children: [
-      {
-        path: "login",
-        element: <LoginForm />,
-        index: true,
-      },
-      {
-        path: "signup",
-      },
-    ],
   },
 ]);
 

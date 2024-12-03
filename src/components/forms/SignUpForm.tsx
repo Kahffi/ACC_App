@@ -1,28 +1,29 @@
+import { signUpSchema } from "@/Schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import {
+  Form,
   FormControl,
+  //   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Form,
 } from "../ui/form";
-import { useForm } from "react-hook-form";
-import { loginSchema } from "@/Schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-export default function LoginForm() {
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
+export default function SignUpForm() {
+  const form = useForm<z.infer<typeof signUpSchema>>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: "",
       password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
+  function onSubmit(values: z.infer<typeof signUpSchema>) {
     console.log(values);
   }
 
@@ -32,7 +33,7 @@ export default function LoginForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-3"
       >
-        {/* Username */}
+        {/* username */}
         <FormField
           control={form.control}
           name="username"
@@ -40,13 +41,16 @@ export default function LoginForm() {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Enter Your Username" {...field} />
+                <Input placeholder="Enter your username" {...field} />
               </FormControl>
               <FormMessage />
+              {/* <FormDescription className="w-3/4">
+                Gunakan username yang unik dan mudah diingat
+              </FormDescription> */}
             </FormItem>
           )}
         />
-        {/* Password */}
+        {/* password */}
         <FormField
           control={form.control}
           name="password"
@@ -55,16 +59,18 @@ export default function LoginForm() {
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter Your Password"
-                  {...field}
                   type="password"
+                  placeholder="Enter your username"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
+              {/* <FormDescription className="w-3/4">
+                Gunakan username yang unik dan mudah diingat
+              </FormDescription> */}
             </FormItem>
           )}
         />
-
         <Button>Submit</Button>
       </form>
     </Form>

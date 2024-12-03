@@ -5,10 +5,13 @@ const USERNAME_STRING = z
   .min(5, {
     message: "Username must contain at least 5 characters",
   })
-  .max(50, {
+  .max(50);
+const PASSWORD_STRING = z
+  .string()
+  .min(5, {
     message: "Password must contain at least 5 characters",
-  });
-const PASSWORD_STRING = z.string().min(5).max(50);
+  })
+  .max(50);
 
 export const loginSchema = z.object({
   username: USERNAME_STRING,
@@ -17,4 +20,5 @@ export const loginSchema = z.object({
 
 export const signUpSchema = z.object({
   username: USERNAME_STRING,
+  password: PASSWORD_STRING,
 });
