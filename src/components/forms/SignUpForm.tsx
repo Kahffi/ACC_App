@@ -33,6 +33,23 @@ export default function SignUpForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-3"
       >
+        {/* email */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter your email" {...field} />
+              </FormControl>
+              <FormMessage />
+              {/* <FormDescription className="w-3/4">
+                Gunakan username yang unik dan mudah diingat
+              </FormDescription> */}
+            </FormItem>
+          )}
+        />
         {/* username */}
         <FormField
           control={form.control}
@@ -71,7 +88,7 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button>Submit</Button>
+        <Button>Sign Up</Button>
       </form>
     </Form>
   );

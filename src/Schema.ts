@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const EMAIL_STRING = z.string().email();
+
 const USERNAME_STRING = z
   .string()
   .min(5, {
@@ -19,6 +21,7 @@ export const loginSchema = z.object({
 });
 
 export const signUpSchema = z.object({
+  email: EMAIL_STRING,
   username: USERNAME_STRING,
   password: PASSWORD_STRING,
 });

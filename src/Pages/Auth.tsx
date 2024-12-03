@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 export default function Auth() {
   const { session } = useParams();
   return (
-    <div className="min-h-dvh flex justify-center items-center bg-gray-300">
-      <main className="max-w-lg flex flex-col items-center sm:p-10 bg-white sm:w-96 gap-8">
+    <div className="min-h-dvh flex justify-center sm:items-center bg-gray-300">
+      <main className="w-full p-5 sm:max-w-2xl flex flex-col items-center sm:p-10 bg-white sm:w-3/4 gap-8">
         <div className="flex flex-col items-center gap-1">
           <h1 className="font-semibold text-3xl">
             {session === "login"
