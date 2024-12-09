@@ -14,6 +14,9 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
+import { auth } from "@/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 export default function SignUpForm() {
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
@@ -24,7 +27,15 @@ export default function SignUpForm() {
   });
 
   function onSubmit(values: z.infer<typeof signUpSchema>) {
-    console.log(values);
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then((userCred) => {
+        console.log(userCred.user);
+        alert("loggedin");
+      })
+      .catch((err) => {
+        console.error(err.code);
+        console.log(err.message);
+      });
   }
 
   return (
@@ -88,7 +99,12 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button>Sign Up</Button>
+        <Button
+          type="submit"
+          className="mt-6 bg-blue-800 font-semibold text-base"
+        >
+          Sign Up
+        </Button>
       </form>
     </Form>
   );

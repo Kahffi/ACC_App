@@ -16,7 +16,7 @@ const PASSWORD_STRING = z
   .max(50);
 
 export const loginSchema = z.object({
-  username: USERNAME_STRING,
+  email: EMAIL_STRING,
   password: PASSWORD_STRING,
 });
 

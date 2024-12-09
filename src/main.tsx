@@ -3,21 +3,30 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./Pages/App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Auth from "./Pages/Auth.tsx";
+import AuthPage from "./Pages/AuthPage.tsx";
+import AuthContextProvider from "./contexts/AuthContextProvider.tsx";
+import ProtectedRoutes from "./ProtectedRoutes.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    element: <ProtectedRoutes />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+    ],
   },
   {
     path: "auth/:session",
-    element: <Auth />,
+    element: <AuthPage />,
   },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </StrictMode>
 );
