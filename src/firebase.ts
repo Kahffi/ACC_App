@@ -1,13 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
-export { app, auth };
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+// Initialize Firebase
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "acc-monitoring.firebaseapp.com",
@@ -15,8 +11,13 @@ const firebaseConfig = {
   storageBucket: "acc-monitoring.firebasestorage.app",
   messagingSenderId: "381226610616",
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Export authentication and database services
 const auth = getAuth(app);
+const database = getDatabase(app);
+
+export { app, auth, database };
