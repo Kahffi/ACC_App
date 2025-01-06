@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex bg-[--far-background] gap-10 h-dvh px-8 sm:pt-6 overflow-hidden w-full">
+    <div className="flex bg-[--far-background] gap-5 h-dvh px-8 sm:pt-6 overflow-hidden w-full">
       <SideBar className="flex flex-col gap-3 max-w-[280px]">
         <CompactProfile />
         <div className="bg-white flex gap-2 p-2 rounded-md items-center mt-5 shadow-black/40 shadow-md">
@@ -18,7 +18,7 @@ function App() {
         </div>
         <NavBar />
       </SideBar>
-      <main className="border-black border w-full overflow-hidden h-full">
+      <main className="border w-full overflow-hidden h-full">
         <Outlet />
       </main>
     </div>
