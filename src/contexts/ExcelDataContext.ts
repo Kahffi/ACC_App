@@ -25,9 +25,11 @@ export interface ProcessedData {
 export type ExcelDataContext = {
   excelData: ProcessedData[] | null;
   setExcelData: React.Dispatch<React.SetStateAction<ProcessedData[] | null>>;
+  timeUploaded: number | null;
 };
 const ExcelDataContext = createContext<ExcelDataContext>({
   excelData: null,
   setExcelData: () => {},
+  timeUploaded: null,
 });
 export default ExcelDataContext;

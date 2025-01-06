@@ -67,7 +67,7 @@ export default function Report() {
 
         // Simpan data ke Firebase Realtime Database
         const dbRef = ref(database, "uploads");
-        set(dbRef, processedData)
+        set(dbRef, { data: processedData, time: Date.now() })
           .then(() => {
             alert("Data berhasil diunggah ke Firebase!");
           })
