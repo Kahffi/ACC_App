@@ -31,7 +31,11 @@ const router = createBrowserRouter([
           },
           {
             path: "report",
-            element: <Report />,
+            element: (
+              <ExcelDataContextProvider>
+                <Report />,
+              </ExcelDataContextProvider>
+            ),
           },
           {
             path: "target",

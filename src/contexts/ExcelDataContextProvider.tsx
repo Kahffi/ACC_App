@@ -12,6 +12,7 @@ export default function ExcelDataContextProvider({
   const [excelData, setExcelData] = useState<ProcessedData[] | null>(null);
   const { currentUser } = useContext(AuthContext);
 
+  //   fetch excel data from firebase
   useEffect(() => {
     if (!currentUser) return;
     const dbRef = ref(database, "uploads");
@@ -42,7 +43,7 @@ export default function ExcelDataContextProvider({
 
   useEffect(() => {});
   return (
-    <ExcelDataContext.Provider value={excelData}>
+    <ExcelDataContext.Provider value={{ excelData, setExcelData }}>
       {children}
     </ExcelDataContext.Provider>
   );

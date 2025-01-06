@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 export default function UserDashboard() {
   //   const [data, setData] = useState<ProcessedData[]>([]);
-  const data = useContext(ExcelDataContext);
+  const { excelData: data } = useContext(ExcelDataContext);
 
   // Ambil data dari Firebase secara real-time
   //   useEffect(() => {

@@ -4,7 +4,7 @@ import { ref, set } from "firebase/database";
 import { useContext, useState } from "react";
 import readXlsxFile from "read-excel-file";
 
-export default function AdminDashboard() {
+export default function AdminReports() {
   const { excelData: data } = useContext(ExcelDataContext);
 
   const [error, setError] = useState<string | null>(null);

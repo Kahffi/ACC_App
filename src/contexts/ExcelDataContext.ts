@@ -21,5 +21,13 @@ export interface ProcessedData {
   ARHO: string;
   ARRO: string;
 }
-const ExcelDataContext = createContext<ProcessedData[] | null>(null);
+
+export type ExcelDataContext = {
+  excelData: ProcessedData[] | null;
+  setExcelData: React.Dispatch<React.SetStateAction<ProcessedData[] | null>>;
+};
+const ExcelDataContext = createContext<ExcelDataContext>({
+  excelData: null,
+  setExcelData: () => {},
+});
 export default ExcelDataContext;
