@@ -6,10 +6,10 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex bg-gray-300 gap-3 min-h-dvh px-4 pt-3">
-      <SideBar className="col-span-1 border border-red-600 flex-1 max-w-[320px] ">
+    <div className="flex bg-[--far-background] gap-10 min-h-dvh px-8 sm:pt-6">
+      <SideBar className="flex flex-col gap-3 flex-1 max-w-[280px] ">
         <CompactProfile />
-        <div className="bg-white flex gap-2 p-2 rounded-md items-center">
+        <div className="bg-white flex gap-2 p-2 rounded-md items-center mt-5 shadow-black/40 shadow-md">
           <img src={acc_logo} alt="ACC logo" className="w-8" />
           <div>
             <p className="text-gray-600 text-xs">AR Management Head</p>
@@ -18,7 +18,7 @@ function App() {
         </div>
         <NavBar />
       </SideBar>
-      <main className="border-black border flex-1">
+      <main className="border-black border flex-[2]">
         <Outlet />
       </main>
     </div>
