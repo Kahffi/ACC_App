@@ -11,6 +11,7 @@ import Report from "./Pages/Report.tsx";
 import Target from "./Pages/Target.tsx";
 import Calendar from "./Pages/Calendar.tsx";
 import Analysis from "./Pages/Analysis.tsx";
+import ExcelDataContextProvider from "./contexts/ExcelDataContextProvider.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Dashboard />,
+            element: (
+              <ExcelDataContextProvider>
+                <Dashboard />
+              </ExcelDataContextProvider>
+            ),
           },
           {
             path: "report",

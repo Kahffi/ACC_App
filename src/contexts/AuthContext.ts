@@ -7,7 +7,7 @@ type TAuthContext = {
   loading: boolean;
 };
 
-interface CurrentUser extends User {
+export interface CurrentUser extends User {
   isAdmin: boolean;
   fullName: string;
 }
