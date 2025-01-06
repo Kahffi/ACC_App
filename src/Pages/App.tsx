@@ -6,8 +6,8 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex bg-[--far-background] gap-10 min-h-dvh px-8 sm:pt-6">
-      <SideBar className="flex flex-col gap-3 flex-1 max-w-[280px] ">
+    <div className="flex bg-[--far-background] gap-10 h-dvh px-8 sm:pt-6 overflow-hidden w-full">
+      <SideBar className="flex flex-col gap-3 max-w-[280px]">
         <CompactProfile />
         <div className="bg-white flex gap-2 p-2 rounded-md items-center mt-5 shadow-black/40 shadow-md">
           <img src={acc_logo} alt="ACC logo" className="w-8" />
@@ -18,7 +18,7 @@ function App() {
         </div>
         <NavBar />
       </SideBar>
-      <main className="border-black border flex-[2]">
+      <main className="border-black border w-full overflow-hidden h-full">
         <Outlet />
       </main>
     </div>
