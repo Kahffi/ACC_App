@@ -1,67 +1,19 @@
 import React, { useContext, useMemo } from "react";
 import ExcelDataContext from "@/contexts/ExcelDataContext";
+import useDataInfo from "@/hooks/useDataInfo";
 
 const Dashboard: React.FC = () => {
   // check if the current user is admin:
-  const { excelData, timeUploaded } = useContext(ExcelDataContext);
+  const { timeUploaded } = useContext(ExcelDataContext);
 
-  const dataOverview = useMemo(() => {
-    if (!excelData) return null;
-
-    let totalOverdue = 0;
-
-    let totalCustomer = 0;
-    const customers = new Set<string>([]);
-
-    let totalArro = 0;
-    const arros = new Set<string>([]);
-
-    let totalArho = 0;
-    const arhos = new Set<string>([]);
-
-    function parseStringOrNumber(data: string | number) {
-      if (typeof data === "string") {
-        return parseInt(data);
-      } else if (typeof data === "number") {
-        return data;
-      } else {
-        return 0;
-      }
-    }
-
-    excelData.forEach((data) => {
-      // menghitung jumlah total overdue
-      totalOverdue =
-        parseStringOrNumber(data.Over) > 0 ? totalOverdue + 1 : totalOverdue;
-      // menghitung jumlah customer unik
-      customers.add(data.Nama_Cust);
-      //  Menghitung jumlah total arro
-      arros.add(data.ARRO);
-      //  Menghitung jumlah total arho
-      arhos.add(data.ARHO);
-    });
-
-    totalCustomer = customers.size;
-    totalArro = arros.size;
-    totalArho = arhos.size;
-
-    return {
-      totalOverdue,
-      totalCustomer,
-      totalData: excelData.length + 1,
-      totalArro,
-      totalArho,
-    };
-  }, [excelData]);
+  const dataOverview = useDataInfo();
 
   return (
     <div className="h-full bg-gray-100 p-2 w-full">
       <div className="flex flex-wrap gap-5">
         {/* last update */}
         <div className="flex flex-col bg-white shadow-md rounded-lg p-7 pt-5 w-52 gap-3">
-          <h3 className="font-semibold text-gray-500">
-            Terakhir diperbarui pada
-          </h3>
+          <h3 className="font-semibold text-gray-500">Terakhir Diperbarui</h3>
           <h2 className="text-2xl font-semibold text-orange-600">
             {timeUploaded && new Date(timeUploaded).toLocaleString()}
           </h2>

@@ -1,9 +1,6 @@
-import ExcelDataContext from "@/contexts/ExcelDataContext";
-import { useContext } from "react";
+import { ProcessedData } from "@/contexts/ExcelDataContext";
 
-export default function DataTable() {
-  const { excelData: data } = useContext(ExcelDataContext);
-
+export default function DataTable({ data }: { data: ProcessedData[] }) {
   return (
     <>
       {/* tampilan admin */}

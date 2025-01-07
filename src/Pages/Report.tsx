@@ -1,6 +1,6 @@
 import DataTable from "@/components/DataTable";
 import { AuthContext } from "@/contexts/AuthContext";
-import { ProcessedData } from "@/contexts/ExcelDataContext";
+import ExcelDataContext, { ProcessedData } from "@/contexts/ExcelDataContext";
 import { database } from "@/firebase";
 import { ref, set } from "firebase/database";
 import { useContext, useState } from "react";
@@ -9,6 +9,8 @@ import readXlsxFile from "read-excel-file";
 export default function Report() {
   // check if the current user is admin:
   const { currentUser } = useContext(AuthContext);
+
+  const { excelData, timeUploaded } = useContext(ExcelDataContext);
 
   const [error, setError] = useState<string | null>(null);
   // Fungsi untuk menangani unggahan file
@@ -90,6 +92,7 @@ export default function Report() {
         <h1 className="text-2xl font-bold text-gray-800 mb-4">
           Dashboard - Data Upload ASCII
         </h1>
+
         {!currentUser ? (
           <></>
         ) : currentUser?.isAdmin ? (
@@ -100,15 +103,20 @@ export default function Report() {
               type="file"
               accept=".xlsx"
               onChange={handleFileUpload}
-              className="mb-4 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
+              className="mb-2 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
             />
-            <DataTable />
+            <p className="mb-2">
+              Last update:{" "}
+              <span>{new Date(timeUploaded!).toLocaleString()}</span>
+            </p>
+            <DataTable data={excelData || []} />
           </>
         ) : (
           // {/* tampilan user biasa */}
-          <DataTable />
+          <DataTable data={excelData || []} />
         )}
       </div>
     </div>
   );
 }
+// 3274

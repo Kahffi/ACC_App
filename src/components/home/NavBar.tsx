@@ -60,8 +60,6 @@ export default function NavBar() {
         key="Dashboard"
       />
       <NavItem icon="lsicon:report-outline" text="Report" key="Report" />
-      <NavItem icon="mingcute:target-line" text="Target" key="target" />
-      <NavItem icon="solar:calendar-linear" text="Calendar" key="Calendar" />
       <NavItem
         icon="hugeicons:analysis-text-link"
         text="Analysis"

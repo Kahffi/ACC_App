@@ -12,7 +12,6 @@ function App() {
         <div className="bg-white flex gap-2 p-2 rounded-md items-center mt-5 shadow-black/40 shadow-md">
           <img src={acc_logo} alt="ACC logo" className="w-8" />
           <div>
-            <p className="text-gray-600 text-xs">AR Management Head</p>
             <p className="text-blue-500">Astra Credit Companies</p>
           </div>
         </div>
