@@ -60,11 +60,6 @@ export default function NavBar() {
         key="Dashboard"
       />
       <NavItem icon="lsicon:report-outline" text="Report" key="Report" />
-      <NavItem
-        icon="hugeicons:analysis-text-link"
-        text="Analysis"
-        key="Analysis"
-      />
     </div>
   );
 }
