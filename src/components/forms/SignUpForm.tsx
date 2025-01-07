@@ -18,8 +18,11 @@ import { auth } from "@/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { database } from "@/firebase";
 import { ref, set } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm() {
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -45,7 +48,7 @@ export default function SignUpForm() {
       .then((userCred) => {
         initUserData(userCred.user.uid, values.username, values.email);
         console.log(userCred.user);
-        alert("loggedin");
+        navigate("/");
       })
       .catch((err) => {
         console.error(err.code);
